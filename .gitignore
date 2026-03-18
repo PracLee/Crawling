@@ -3,3 +3,6 @@ venv/
 __pycache__/
 *.pyc
 .env
+
+# ChromaDB 벡터 저장소 (용량 크고 재생성 가능)
+data/chromadb/

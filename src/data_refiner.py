@@ -25,27 +25,51 @@ class DataRefiner:
             r"Available at Nordstrom.*?(?=\n|$)"
         ]
         
-        # 간단한 텍스트 매칭을 통한 속성 추출용 사전
+        # 간단한 텍스트 매칭을 통한 속성 추출용 사전 (영문 + 한국어)
         self.hair_styles = [
-            "bob", "pixie", "layered", "curtain bangs", "bangs", "updo", 
-            "bun", "braid", "ponytail", "lob", "shag", "mullet", "extensions", 
-            "chignon", "waves", "curls", "knot", "half-up"
+            "bob", "pixie", "layered", "curtain bangs", "bangs", "updo",
+            "bun", "braid", "ponytail", "lob", "shag", "mullet", "extensions",
+            "chignon", "waves", "curls", "knot", "half-up",
+            # 한국어 헤어스타일 키워드
+            "단발", "숏컷", "레이어드", "시스루뱅", "앞머리", "업스타일",
+            "번헤어", "브레이드", "포니테일", "허쉬컷", "울프컷", "빌드컷",
+            "웨이브", "컬", "펌", "히피펌", "레이어컷", "가르마",
+            "보브컷", "태슬컷", "샤기컷", "헤어스타일", "머리스타일",
+            "투블럭", "리젠트", "댄디컷", "포마드", "바버컷", "크롭컷",
+            "애즈펌", "다운펌", "가일컷", "리프컷"
         ]
-        
+
         self.hair_colors = [
-            "blonde", "brunette", "red", "copper", "balayage", "highlights", 
-            "ombre", "silver", "gray", "black", "brown", "caramel", "chocolate", 
-            "strawberry", "auburn", "platinum"
+            "blonde", "brunette", "red", "copper", "balayage", "highlights",
+            "ombre", "silver", "gray", "black", "brown", "caramel", "chocolate",
+            "strawberry", "auburn", "platinum",
+            # 한국어 헤어컬러 키워드
+            "염색", "탈색", "블론드", "브루넷", "발레아쥬", "하이라이트",
+            "옴브레", "애쉬", "밀크티컬러", "핑크브라운", "초코브라운",
+            "카라멜", "구리빛", "레드브라운", "로즈골드", "베이지브라운",
+            "흑발", "다크브라운", "톤다운", "톤업", "컬러링", "새치염색",
+            "그레이컬러", "실버컬러", "머쉬룸블론드"
         ]
         
-        # 역사적/결혼식/향수 및 제품 리뷰/쇼핑 관련 가비지 데이터를 걸러낼 키워드
+        # 역사적/결혼식/향수 및 제품 리뷰/쇼핑 관련 가비지 데이터를 걸러낼 키워드 (영문 + 한국어)
         self.banned_keywords = [
-            "1990s", "1980s", "1970s", "1960s", "1950s", "vintage", "old hollywood", 
+            "1990s", "1980s", "1970s", "1960s", "1950s", "vintage", "old hollywood",
             "history", "retro", "nuptials", "wedding", "bridal", "bride", "royal", "princess",
             "how to use", "best shampoo", "best conditioner", "hair dryer", "curling iron",
             "flat iron", "serum", "scalp scrub", "hair growth", "hair loss", "thinning hair",
             "dandruff", "vitamin c", "pillowcase", "leggings", "showerhead", "shop now",
-            "buy now", "amazon", "sephora", "nordstrom", "ulta", "price:"
+            "buy now", "amazon", "sephora", "nordstrom", "ulta", "price:",
+            # 한국어 비헤어 배제 키워드 (스킨케어/메이크업/향수/패션/제품리뷰)
+            "스킨케어", "피부관리", "피부과", "여드름", "주름", "모공",
+            "파운데이션", "립스틱", "아이섀도", "마스카라", "컨실러", "블러셔",
+            "선크림", "자외선", "톤크림", "쿠션팩트", "비비크림",
+            "향수", "퍼퓸", "디퓨저", "바디로션", "바디워시", "핸드크림",
+            "네일", "매니큐어", "페디큐어", "젤네일",
+            "구매하기", "최저가", "할인", "쿠폰", "무료배송",
+            "다이어트", "운동", "필라테스", "요가", "헬스",
+            "패션위크", "컬렉션 리뷰", "런웨이 리뷰", "스트리트패션",
+            "가방", "신발", "시계", "주얼리", "악세서리", "선글라스",
+            "인테리어", "레시피", "맛집", "여행", "호텔"
         ]
         
         # 정규식을 이용해 연도(예: 1952, '80s)나 구체적인 튜토리얼(spray 6 to 10 inches) 문구 제거용 필터
